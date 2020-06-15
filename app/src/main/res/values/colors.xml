@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="channels_title_text_color">#C1C1C1</color>
+    <color name="fragment_home_background_color">#23272F</color>
+    <color name="new_episodes_title_text_color">#95989D</color>
+    <color name="color_white">#FFF</color>
+    <color name="series_subtitle_text_color">#95989D</color>
+    <color name="categories_title_text_color">#95989D</color>
+    <color name="category_background_color">#3395989D</color>
+    <color name="new_episode_section_text_color">#95989D</color>
+    <color name="line_divider_color">#3C434E</color>
+</resources>

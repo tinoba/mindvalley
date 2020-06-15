@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Mindvalley Channels</string>
+    <string name="channels_title">Channels</string>
+    <string name="new_episodes_title">New Episodes</string>
+    <string name="series_icon_content_description">Series Icon</string>
+    <string name="series_amount">%d series</string>
+    <string name="browse_by_categories_title">Browse by categories</string>
+    <string name="series_image_content_description">Series Image</string>
+    <string name="course_image_content_description">Course Image</string>
+</resources>

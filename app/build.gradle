@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion compile_sdk_version
+
+    defaultConfig {
+        applicationId "com.tinoba.mindvalleychannels"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    //core
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation "androidx.core:core-ktx:$versions.core_ktx"
+    implementation "androidx.appcompat:appcompat:$versions.app_compat"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+    implementation "com.google.android.material:material:$versions.material"
+
+    //viewmodel
+    implementation "android.arch.lifecycle:extensions:$versions.viewmodel"
+    implementation "android.arch.lifecycle:viewmodel:$versions.viewmodel"
+
+    //dagger
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+
+    //networking
+    implementation "com.google.code.gson:gson:$versions.gson"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+
+    //rxjava
+    implementation "io.reactivex.rxjava3:rxandroid:$versions.rxAndroid"
+    implementation "io.reactivex.rxjava3:rxjava:$versions.rxJava"
+
+    //room
+    implementation "android.arch.persistence.room:runtime:$versions.room"
+    implementation "android.arch.persistence.room:rxjava2:$versions.room"
+    kapt "android.arch.persistence.room:compiler:$versions.room"
+
+    //test
+    testImplementation "junit:junit:$versions.junit"
+    androidTestImplementation "androidx.test.ext:junit:$versions.test_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
+}

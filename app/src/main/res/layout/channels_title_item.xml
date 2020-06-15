@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="#23272F">
+
+    <TextView
+        android:id="@+id/fragmentHomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginStart="@dimen/fragment_home_title_horizontal_margin"
+        android:layout_marginTop="@dimen/fragment_home_title_top_margin"
+        android:layout_marginEnd="@dimen/fragment_home_title_horizontal_margin"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/channels_title"
+        android:textColor="@color/channels_title_text_color"
+        android:textSize="@dimen/fragment_home_title_text_size" />
+
+</FrameLayout>
