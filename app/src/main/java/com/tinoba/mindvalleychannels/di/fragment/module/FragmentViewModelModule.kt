@@ -1,6 +1,7 @@
 package com.tinoba.mindvalleychannels.di.fragment.module
 
 import androidx.lifecycle.ViewModelProvider
+import com.tinoba.domain.repository.ChannelsRepository
 import com.tinoba.mindvalleychannels.base.BaseFragment
 import com.tinoba.mindvalleychannels.di.application.module.ThreadingModule
 import com.tinoba.mindvalleychannels.di.fragment.component.FragmentScope
@@ -18,13 +19,15 @@ class FragmentViewModelModule(val fragment: BaseFragment) {
     @FragmentScope
     internal fun provideHomeFragmentViewModel(
         @Named(ThreadingModule.MAIN_SCHEDULER) mainThreadScheduler: Scheduler,
-        @Named(ThreadingModule.BACKGROUND_SCHEDULER) backgroundThreadScheduler: Scheduler
+        @Named(ThreadingModule.BACKGROUND_SCHEDULER) backgroundThreadScheduler: Scheduler,
+        channelsRepository: ChannelsRepository
     ): HomeFragmentViewModel {
 
         val viewModelFactory = HomeFragmentViewModelFactory(
             backgroundThreadScheduler,
-            mainThreadScheduler/*,
-            connectivityReceiver*/
+            mainThreadScheduler,
+            channelsRepository
+            //connectivityReceiver
         )
 
         return ViewModelProvider(fragment, viewModelFactory).get(HomeFragmentViewModel::class.java)

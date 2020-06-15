@@ -1,0 +1,35 @@
+apply plugin: 'java-library'
+apply plugin: "kotlin"
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    //rxjava
+    implementation "io.reactivex.rxjava3:rxandroid:$versions.rxAndroid"
+    implementation "io.reactivex.rxjava3:rxjava:$versions.rxJava"
+
+    testImplementation 'junit:junit:4.12'
+}

@@ -42,6 +42,8 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initAdapter()
 
+        viewModel.getChannels()
+
         adapter.submitList(
             listOf(
                 HomeScreenModel.TitleItem(),
@@ -74,16 +76,12 @@ class HomeFragment : BaseFragment() {
                 )
             )
         )
-
-        Toast.makeText(context, viewModel.getNumber().toString(), Toast.LENGTH_SHORT).show()
     }
 
     private fun initAdapter() {
         adapter = ChannelsAdapter(inflater, resourceUtils)
 
         channelsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        val itemDecor = DividerDecorator(requireContext())
-//        channelsRecyclerView.addItemDecoration(itemDecor)
         channelsRecyclerView.adapter = adapter
     }
 }

@@ -1,6 +1,8 @@
 package com.tinoba.mindvalleychannels.di.application.component
 
 import com.tinoba.mindvalleychannels.application.MindvalleyApplication
+import com.tinoba.mindvalleychannels.di.activity.module.DataModule
+import com.tinoba.mindvalleychannels.di.activity.module.MapperModule
 import com.tinoba.mindvalleychannels.di.activity.module.UtilsModule
 import com.tinoba.mindvalleychannels.di.application.module.ApplicationModule
 import com.tinoba.mindvalleychannels.di.application.module.ThreadingModule
@@ -12,9 +14,9 @@ import javax.inject.Singleton
     modules = [
         ApplicationModule::class,
         ThreadingModule::class,
-        UtilsModule::class/*,
+        UtilsModule::class,
         DataModule::class,
-        MapperModule::class,
+        MapperModule::class/*,
         UseCaseModule::class,
         UtilsModule::class,*/
     ]
@@ -27,9 +29,9 @@ interface ApplicationComponent : ApplicationComponentInjects, ApplicationCompone
             DaggerApplicationComponent.builder()
                 .applicationModule(ApplicationModule(application))
                 .threadingModule(ThreadingModule())
-                .utilsModule(UtilsModule())/*
+                .utilsModule(UtilsModule())
                 .dataModule(DataModule())
-                .mapperModule(MapperModule())
+                .mapperModule(MapperModule())/*
                 .utilsModule(UtilsModule())*/
                 .build()
     }
