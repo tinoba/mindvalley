@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.*
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tinoba.mindvalleychannels.R
+import com.tinoba.mindvalleychannels.ui.view.CircularProgressBar
 import com.tinoba.mindvalleychannels.utils.GridSpacingItemDecoration
 import com.tinoba.mindvalleychannels.utils.ResourceUtils
 import kotlinx.android.synthetic.main.channels_categories_item.view.*
@@ -64,12 +67,6 @@ class ChannelsAdapter(
                 layoutManager = childLayoutManager
                 setRecycledViewPool(RecyclerView.RecycledViewPool())
 
-                //                addItemDecoration(
-                //                    GridSpacingItemDecoration(
-                //                        CategoriesViewHolder.SPAN_COUNT,
-                //                        resourceUtils.getDimensionPixelSizeFromResource(R.dimen.categories_grid_view_spacing)
-                //                    )
-                //                )
                 adapter = newEpisodesAdapter
             }
 
@@ -89,17 +86,21 @@ class ChannelsAdapter(
             seriesTitle.text = screenModel.title
             seriesSubtitle.text = resourceUtils.getString(R.string.series_amount, screenModel.amount)
 
+            Glide.with(this)
+                .load(screenModel.iconUrl)
+                .fitCenter()
+                .placeholder(CircularProgressBar(context))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.ic_mindvalley_placeholder)
+                .dontAnimate()
+                .into(seriesIcon)
+
             val childLayoutManager = LinearLayoutManager(seriesRecyclerView.context, LinearLayoutManager.HORIZONTAL, false)
             val seriesAdapter = SeriesAdapter(layoutInflater, resourceUtils)
             seriesRecyclerView.apply {
                 layoutManager = childLayoutManager
                 setRecycledViewPool(RecyclerView.RecycledViewPool())
-                //                addItemDecoration(
-                //                    GridSpacingItemDecoration(
-                //                        CategoriesViewHolder.SPAN_COUNT,
-                //                        resourceUtils.getDimensionPixelSizeFromResource(R.dimen.categories_grid_view_spacing)
-                //                    )
-                //                )
+
                 adapter = seriesAdapter
             }
 
@@ -119,17 +120,21 @@ class ChannelsAdapter(
             seriesTitle.text = screenModel.title
             seriesSubtitle.text = resourceUtils.getString(R.string.series_amount, screenModel.amount)
 
+            Glide.with(this)
+                .load(screenModel.iconUrl)
+                .fitCenter()
+                .placeholder(CircularProgressBar(context))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.ic_mindvalley_placeholder)
+                .dontAnimate()
+                .into(seriesIcon)
+
             val childLayoutManager = LinearLayoutManager(seriesRecyclerView.context, LinearLayoutManager.HORIZONTAL, false)
             val courseAdapter = CourseAdapter(layoutInflater, resourceUtils)
             seriesRecyclerView.apply {
                 layoutManager = childLayoutManager
                 setRecycledViewPool(RecyclerView.RecycledViewPool())
-                //                addItemDecoration(
-                //                    GridSpacingItemDecoration(
-                //                        CategoriesViewHolder.SPAN_COUNT,
-                //                        resourceUtils.getDimensionPixelSizeFromResource(R.dimen.categories_grid_view_spacing)
-                //                    )
-                //                )
+
                 adapter = courseAdapter
             }
 

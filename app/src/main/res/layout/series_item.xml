@@ -6,14 +6,15 @@
     android:layout_height="wrap_content"
     tools:background="#23272F">
 
-    <ImageView
+    <com.rishabhharit.roundedimageview.RoundedImageView
         android:id="@+id/seriesImage"
         android:layout_width="@dimen/series_image_width"
         android:layout_height="@dimen/series_image_height"
         android:layout_marginEnd="@dimen/series_image_margin_end"
         android:contentDescription="@string/series_image_content_description"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher"
+        app:cornerRadius="@dimen/series_image_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

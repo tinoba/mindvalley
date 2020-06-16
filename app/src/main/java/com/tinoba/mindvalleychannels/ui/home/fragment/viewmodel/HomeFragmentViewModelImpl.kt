@@ -39,10 +39,24 @@ class HomeFragmentViewModelImpl(
         homeScreenModels.add(HomeScreenModel.TitleItem())
 
         channels.forEach {
-            if (it.channels.isNotEmpty() && it.channels.first() is Course){
-                homeScreenModels.add(HomeScreenModel.CourseItem(it.id, it.title, it.mediaCount, it.channels.map { SeriesScreenModel(it.title, it.coverAsset) }))
-            }else if (it.channels.isNotEmpty() && it.channels.first() is Series){
-                homeScreenModels.add(HomeScreenModel.SeriesItem(it.id, it.title, it.mediaCount, it.channels.map { SeriesScreenModel(it.title, it.coverAsset) }))
+            if (it.channels.isNotEmpty() && it.channels.first() is Course) {
+                homeScreenModels.add(
+                    HomeScreenModel.CourseItem(
+                        it.id,
+                        it.title,
+                        it.mediaCount,
+                        it.iconAsset,
+                        it.channels.map { SeriesScreenModel(it.title, it.coverAsset) })
+                )
+            } else if (it.channels.isNotEmpty() && it.channels.first() is Series) {
+                homeScreenModels.add(
+                    HomeScreenModel.SeriesItem(
+                        it.id,
+                        it.title,
+                        it.mediaCount,
+                        it.iconAsset,
+                        it.channels.map { SeriesScreenModel(it.title, it.coverAsset) })
+                )
             }
         }
 

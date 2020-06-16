@@ -35,4 +35,7 @@
     <dimen name="line_divider_top_margin">30dp</dimen>
     <dimen name="line_divider_height">1dp</dimen>
     <dimen name="channels_recycler_view_bottom_padding">46dp</dimen>
+    <dimen name="course_image_radius">8dp</dimen>
+    <dimen name="series_image_radius">6dp</dimen>
+    <dimen name="new_episode_radius">8dp</dimen>
 </resources>

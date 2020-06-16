@@ -13,9 +13,9 @@
         android:layout_marginStart="@dimen/series_icon_start_margin"
         android:layout_marginTop="@dimen/series_icon_top_margin"
         android:contentDescription="@string/series_icon_content_description"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/seriesTitle"

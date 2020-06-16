@@ -18,7 +18,8 @@ sealed class HomeScreenModel(val type: Int) {
         }
     }
 
-    data class SeriesItem(val id: Int, val title: String, val amount: Int, val series: List<SeriesScreenModel>) : HomeScreenModel(TYPE) {
+    data class SeriesItem(val id: Int, val title: String, val amount: Int, val iconUrl: String, val series: List<SeriesScreenModel>) :
+        HomeScreenModel(TYPE) {
 
         companion object {
 
@@ -26,7 +27,8 @@ sealed class HomeScreenModel(val type: Int) {
         }
     }
 
-    data class CourseItem(val id: Int, val title: String, val amount: Int, val series: List<SeriesScreenModel>) : HomeScreenModel(TYPE) {
+    data class CourseItem(val id: Int, val title: String, val amount: Int, val iconUrl: String, val series: List<SeriesScreenModel>) :
+        HomeScreenModel(TYPE) {
 
         companion object {
 

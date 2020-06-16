@@ -6,13 +6,14 @@
     android:layout_height="wrap_content"
     tools:background="#23272F">
 
-    <ImageView
+    <com.rishabhharit.roundedimageview.RoundedImageView
         android:id="@+id/courseImage"
         android:layout_width="@dimen/course_image_width"
         android:layout_height="@dimen/course_image_height"
+        app:cornerRadius="@dimen/course_image_radius"
         android:layout_marginEnd="@dimen/course_image_end_margin"
         android:contentDescription="@string/course_image_content_description"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
