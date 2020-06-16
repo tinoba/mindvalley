@@ -1,4 +1,4 @@
-package com.tinoba.mindvalleychannels.ui.home.fragment
+package com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -13,8 +13,8 @@ class HomeFragmentViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(HomeFragmentViewModel::class.java)) {
-            return HomeFragmentViewModel(
+        if (modelClass.isAssignableFrom(HomeFragmentViewModelImpl::class.java)) {
+            return HomeFragmentViewModelImpl(
                 backgroundThreadScheduler,
                 mainThreadScheduler,
                 channelsRepository/*,

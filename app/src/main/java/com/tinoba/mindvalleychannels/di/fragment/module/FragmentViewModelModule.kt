@@ -5,8 +5,9 @@ import com.tinoba.domain.repository.ChannelsRepository
 import com.tinoba.mindvalleychannels.base.BaseFragment
 import com.tinoba.mindvalleychannels.di.application.module.ThreadingModule
 import com.tinoba.mindvalleychannels.di.fragment.component.FragmentScope
-import com.tinoba.mindvalleychannels.ui.home.fragment.HomeFragmentViewModel
-import com.tinoba.mindvalleychannels.ui.home.fragment.HomeFragmentViewModelFactory
+import com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel.HomeFragmentViewModel
+import com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel.HomeFragmentViewModelFactory
+import com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel.HomeFragmentViewModelImpl
 import dagger.Module
 import dagger.Provides
 import io.reactivex.rxjava3.core.Scheduler
@@ -30,6 +31,6 @@ class FragmentViewModelModule(val fragment: BaseFragment) {
             //connectivityReceiver
         )
 
-        return ViewModelProvider(fragment, viewModelFactory).get(HomeFragmentViewModel::class.java)
+        return ViewModelProvider(fragment, viewModelFactory).get(HomeFragmentViewModelImpl::class.java)
     }
 }

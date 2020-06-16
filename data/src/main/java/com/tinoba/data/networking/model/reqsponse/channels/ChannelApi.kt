@@ -4,5 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 data class ChannelApi(
     @SerializedName("title") val title: String,
-    @SerializedName("series") val series: List<SeriesApi>
+    @SerializedName("series") val series: List<SeriesApi>,
+    @SerializedName("mediaCount") val mediaCount: Int,
+    @SerializedName("latestMedia") val courses: List<CourseApi>,
+    @SerializedName("id") val id: Int,
+    @SerializedName("iconAsset") val iconAsset: IconAssetApi?,
+    @SerializedName("coverAsset") val coverAsset: CoverAssetApi?
 )
