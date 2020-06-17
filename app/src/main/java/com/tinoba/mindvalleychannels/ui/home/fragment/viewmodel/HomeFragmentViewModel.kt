@@ -7,5 +7,5 @@ interface HomeFragmentViewModel {
 
     val uiModel: MutableLiveData<List<HomeScreenModel>>
 
-    fun getChannels()
+    fun getData()
 }

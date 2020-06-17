@@ -10,7 +10,7 @@ sealed class HomeScreenModel(val type: Int) {
         }
     }
 
-    data class NewEpisodesItem(val id: Int, val newEpisodes: List<NewEpisodesScreenModel>) : HomeScreenModel(TYPE) {
+    data class NewEpisodesItem(val newEpisodes: List<NewEpisodesScreenModel>) : HomeScreenModel(TYPE) {
 
         companion object {
 

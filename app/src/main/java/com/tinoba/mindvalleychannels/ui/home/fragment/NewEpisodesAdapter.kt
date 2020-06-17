@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tinoba.mindvalleychannels.R
+import com.tinoba.mindvalleychannels.ui.view.CircularProgressBar
 import com.tinoba.mindvalleychannels.utils.ResourceUtils
 import kotlinx.android.synthetic.main.new_eppisodes_item.view.*
 
@@ -23,7 +26,7 @@ class NewEpisodesAdapter(
         NewEpisodesViewHolder(resourceUtils, layoutInflater.inflate(LAYOUT_RESOURCE, parent, false))
 
     override fun onBindViewHolder(holder: NewEpisodesViewHolder, position: Int) {
-        holder.setItem(getItem(position), position, itemCount)
+        holder.setItem(getItem(position))
     }
 
     class NewEpisodesViewHolder(
@@ -31,9 +34,18 @@ class NewEpisodesAdapter(
         private val view: View
     ) : RecyclerView.ViewHolder(view) {
 
-        fun setItem(screenModel: NewEpisodesScreenModel, position: Int, itemCount: Int) = with(view) {
+        fun setItem(screenModel: NewEpisodesScreenModel) = with(view) {
             newEpisodeName.text = screenModel.name
             newEpisodeSection.text = screenModel.section
+
+            Glide.with(this)
+                .load(screenModel.imageUrl)
+                .fitCenter()
+                .placeholder(CircularProgressBar(context))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.ic_mindvalley_placeholder)
+                .dontAnimate()
+                .into(newEpisodeImage)
         }
     }
 }

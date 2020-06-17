@@ -1,4 +1,4 @@
-package com.tinoba.data.networking.model.reqsponse.channels
+package com.tinoba.data.networking.model.reqsponse
 
 import com.google.gson.annotations.SerializedName
 

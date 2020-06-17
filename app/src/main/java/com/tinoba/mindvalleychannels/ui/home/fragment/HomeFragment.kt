@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment() {
             adapter.submitList(homeScreenModels)
         })
 
-        viewModel.getChannels()
+        viewModel.getData()
 
     }
 

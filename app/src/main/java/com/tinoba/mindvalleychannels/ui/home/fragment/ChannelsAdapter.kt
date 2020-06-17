@@ -93,6 +93,7 @@ class ChannelsAdapter(
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.ic_mindvalley_placeholder)
                 .dontAnimate()
+                .circleCrop()
                 .into(seriesIcon)
 
             val childLayoutManager = LinearLayoutManager(seriesRecyclerView.context, LinearLayoutManager.HORIZONTAL, false)
@@ -127,6 +128,7 @@ class ChannelsAdapter(
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.ic_mindvalley_placeholder)
                 .dontAnimate()
+                .circleCrop()
                 .into(seriesIcon)
 
             val childLayoutManager = LinearLayoutManager(seriesRecyclerView.context, LinearLayoutManager.HORIZONTAL, false)
