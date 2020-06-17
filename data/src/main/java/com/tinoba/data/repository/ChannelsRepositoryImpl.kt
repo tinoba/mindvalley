@@ -11,4 +11,6 @@ class ChannelsRepositoryImpl(private val mindvalleyClient: MindvalleyClient) : C
     override fun getChannels(): Single<List<Channels>> = mindvalleyClient.getChannels()
 
     override fun getNewEpisodes(): Single<List<NewEpisode>> = mindvalleyClient.getNewEpisodes()
+
+    override fun getCategories(): Single<List<String>> = mindvalleyClient.getCategories()
 }

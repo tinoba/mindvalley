@@ -36,7 +36,7 @@ sealed class HomeScreenModel(val type: Int) {
         }
     }
 
-    data class CategoriesItem(val id: Int, val categories: List<String>) : HomeScreenModel(TYPE) {
+    data class CategoriesItem(val categories: List<String>) : HomeScreenModel(TYPE) {
 
         companion object {
 

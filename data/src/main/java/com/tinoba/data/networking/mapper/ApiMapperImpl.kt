@@ -1,5 +1,6 @@
 package com.tinoba.data.networking.mapper
 
+import com.tinoba.data.networking.model.reqsponse.categories.CategoriesApi
 import com.tinoba.data.networking.model.reqsponse.channels.ChannelsApi
 import com.tinoba.data.networking.model.reqsponse.newepisodes.NewEpisodesApi
 import com.tinoba.domain.model.Channels
@@ -24,4 +25,6 @@ class ApiMapperImpl : ApiMapper {
 
     override fun mapToNewEpisodes(newEpisodesApi: NewEpisodesApi): List<NewEpisode> =
         newEpisodesApi.data.episodes.map { NewEpisode(it.title, it.coverAsset.url, it.channel.title) }
+
+    override fun mapToCategories(categoriesApi: CategoriesApi): List<String> = categoriesApi.data.categories.map { it.categoryName }
 }

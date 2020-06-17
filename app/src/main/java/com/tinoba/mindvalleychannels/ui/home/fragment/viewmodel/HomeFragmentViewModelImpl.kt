@@ -13,7 +13,7 @@ import com.tinoba.mindvalleychannels.ui.home.fragment.SeriesScreenModel
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.functions.BiFunction
+import io.reactivex.rxjava3.functions.Function3
 
 class HomeFragmentViewModelImpl(
     private val backgroundThreadScheduler: Scheduler,
@@ -33,7 +33,14 @@ class HomeFragmentViewModelImpl(
             Single.zip(
                 channelsRepository.getChannels(),
                 channelsRepository.getNewEpisodes(),
-                BiFunction { channels: List<Channels>, newEpisodes: List<NewEpisode> -> InitialData(channels, newEpisodes) }
+                channelsRepository.getCategories(),
+                Function3 { channels: List<Channels>, newEpisodes: List<NewEpisode>, categories: List<String> ->
+                    InitialData(
+                        channels,
+                        newEpisodes,
+                        categories
+                    )
+                }
             )
                 .map { mapToHomeScreenModels(it) }
                 .observeOn(mainThreadScheduler)
@@ -77,6 +84,8 @@ class HomeFragmentViewModelImpl(
                 }
             }
 
+            homeScreenModels.add(HomeScreenModel.CategoriesItem(categories))
+
             return homeScreenModels
         }
     }
@@ -91,5 +100,5 @@ class HomeFragmentViewModelImpl(
         super.onCleared()
     }
 
-    data class InitialData(val channels: List<Channels>, val newEpisodes: List<NewEpisode>)
+    data class InitialData(val channels: List<Channels>, val newEpisodes: List<NewEpisode>, val categories: List<String>)
 }

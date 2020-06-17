@@ -17,4 +17,8 @@ class MindvalleyClientImpl(
     override fun getNewEpisodes(): Single<List<NewEpisode>> =
         Single.defer { mindvalleyService.getNewEpisodes() }
             .map(apiMapper::mapToNewEpisodes)
+
+    override fun getCategories(): Single<List<String>> =
+        Single.defer { mindvalleyService.getCategories() }
+            .map(apiMapper::mapToCategories)
 }

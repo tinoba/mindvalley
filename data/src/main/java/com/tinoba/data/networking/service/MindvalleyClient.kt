@@ -9,4 +9,6 @@ interface MindvalleyClient {
     fun getChannels(): Single<List<Channels>>
 
     fun getNewEpisodes(): Single<List<NewEpisode>>
+
+    fun getCategories(): Single<List<String>>
 }
