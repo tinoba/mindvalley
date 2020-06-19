@@ -53,9 +53,9 @@ class HomeFragmentViewModelImpl(
 
             homeScreenModels.add(HomeScreenModel.NewEpisodesItem(newEpisodes.map {
                 NewEpisodesScreenModel(
-                    it.title,
-                    it.channelName,
-                    it.coverAssetUrl
+                    it.title?:"",
+                    it.channelName?:"",
+                    it.coverAssetUrl?:""
                 )
             }))
 
