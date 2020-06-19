@@ -1,9 +1,9 @@
 package com.tinoba.mindvalleychannels.di.application.component
 
 import com.tinoba.mindvalleychannels.application.MindvalleyApplication
-import com.tinoba.mindvalleychannels.di.activity.module.DataModule
-import com.tinoba.mindvalleychannels.di.activity.module.MapperModule
-import com.tinoba.mindvalleychannels.di.activity.module.UtilsModule
+import com.tinoba.mindvalleychannels.di.application.module.DataModule
+import com.tinoba.mindvalleychannels.di.application.module.MapperModule
+import com.tinoba.mindvalleychannels.di.application.module.UtilsModule
 import com.tinoba.mindvalleychannels.di.application.module.ApplicationModule
 import com.tinoba.mindvalleychannels.di.application.module.ThreadingModule
 import dagger.Component

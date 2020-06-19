@@ -43,7 +43,7 @@ class NewEpisodesAdapter(
                 .fitCenter()
                 .placeholder(CircularProgressBar(context))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.ic_mindvalley_placeholder)
+                .error(R.drawable.no_image)
                 .dontAnimate()
                 .into(newEpisodeImage)
         }

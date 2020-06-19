@@ -3,7 +3,7 @@ package com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tinoba.domain.repository.ChannelsRepository
-import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.Scheduler
 
 class HomeFragmentViewModelFactory(
     private val backgroundThreadScheduler: Scheduler,

@@ -3,7 +3,7 @@ package com.tinoba.data.networking.service
 import com.tinoba.data.networking.model.reqsponse.categories.CategoriesApi
 import com.tinoba.data.networking.model.reqsponse.channels.ChannelsApi
 import com.tinoba.data.networking.model.reqsponse.newepisodes.NewEpisodesApi
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 import retrofit2.http.GET
 
 interface MindvalleyService {

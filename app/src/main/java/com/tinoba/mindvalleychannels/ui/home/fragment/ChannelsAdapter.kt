@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tinoba.mindvalleychannels.R
 import com.tinoba.mindvalleychannels.ui.view.CircularProgressBar
-import com.tinoba.mindvalleychannels.utils.GridSpacingItemDecoration
+import com.tinoba.mindvalleychannels.ui.view.GridSpacingItemDecoration
 import com.tinoba.mindvalleychannels.utils.ResourceUtils
 import kotlinx.android.synthetic.main.channels_categories_item.view.*
 import kotlinx.android.synthetic.main.channels_item.view.*

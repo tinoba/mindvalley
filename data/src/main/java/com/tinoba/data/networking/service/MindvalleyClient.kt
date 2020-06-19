@@ -2,7 +2,7 @@ package com.tinoba.data.networking.service
 
 import com.tinoba.domain.model.Channels
 import com.tinoba.domain.model.NewEpisode
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 
 interface MindvalleyClient {
 

@@ -1,23 +1,28 @@
-package com.tinoba.mindvalleychannels.di.activity.module
+package com.tinoba.mindvalleychannels.di.application.module
 
 import android.content.Context
 import androidx.room.Room
 import com.google.gson.Gson
 import com.tinoba.data.database.MindvalleyDatabase
+import com.tinoba.data.database.crudder.*
+import com.tinoba.data.database.dao.CategoriesDao
+import com.tinoba.data.database.dao.ChannelsDao
+import com.tinoba.data.database.dao.NewEpisodesDao
 import com.tinoba.data.networking.mapper.ApiMapper
 import com.tinoba.data.networking.service.MindvalleyClient
 import com.tinoba.data.networking.service.MindvalleyClientImpl
 import com.tinoba.data.networking.service.MindvalleyService
 import com.tinoba.data.repository.ChannelsRepositoryImpl
+import com.tinoba.device.ConnectivityReceiver
 import com.tinoba.domain.repository.ChannelsRepository
 import com.tinoba.mindvalleychannels.BuildConfig
 import com.tinoba.mindvalleychannels.di.application.component.ApplicationScope
 import dagger.Module
 import dagger.Provides
-import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -26,6 +31,8 @@ import javax.inject.Singleton
 class DataModule {
 
     companion object {
+
+        const val TIMEOUT_SECONDS = 10L
 
         const val BASE_URL = "https://pastebin.com/raw/"
     }
@@ -51,9 +58,9 @@ class DataModule {
 
         if (BuildConfig.DEBUG) {
             builder.interceptors().add(interceptor)
-            builder.connectTimeout(10, TimeUnit.SECONDS)
-            builder.writeTimeout(10, TimeUnit.SECONDS)
-            builder.readTimeout(10, TimeUnit.SECONDS)
+            builder.connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+            builder.writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+            builder.readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
         }
 
         return builder.build()
@@ -70,7 +77,13 @@ class DataModule {
 
     @Provides
     @Singleton
-    internal fun provideChannelsRepository(mindvalleyClient: MindvalleyClient): ChannelsRepository = ChannelsRepositoryImpl(mindvalleyClient)
+    internal fun provideChannelsRepository(
+        mindvalleyClient: MindvalleyClient,
+        categoriesCrudder: CategoriesCrudder,
+        connectivityReceiver: ConnectivityReceiver,
+        channelsCrudder: ChannelsCrudder,
+        newEpisodesCrudder: NewEpisodesCrudder
+    ): ChannelsRepository = ChannelsRepositoryImpl(mindvalleyClient, categoriesCrudder, newEpisodesCrudder, channelsCrudder, connectivityReceiver)
 
     @Provides
     @Singleton
@@ -84,9 +97,33 @@ class DataModule {
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideCategoriesDao(database: MindvalleyDatabase): CategoriesDao = database.categories()
+
+    @Provides
+    @Singleton
+    fun provideCategoriesCrudder(categoriesDao: CategoriesDao): CategoriesCrudder = CategoriesCruderImpl(categoriesDao)
+
+    @Provides
+    @Singleton
+    fun provideNewEpisodesDao(database: MindvalleyDatabase): NewEpisodesDao = database.newEpisodes()
+
+    @Provides
+    @Singleton
+    fun provideNewEpisodesCrudder(newEpisodesDao: NewEpisodesDao): NewEpisodesCrudder = NewEpisodesCrudderImpl(newEpisodesDao)
+
+    @Provides
+    @Singleton
+    fun provideChannelsDao(database: MindvalleyDatabase): ChannelsDao = database.channels()
+
+    @Provides
+    @Singleton
+    fun provideChannelsCrudder(channelsDao: ChannelsDao): ChannelsCrudder = ChannelsCrudderImpl(channelsDao)
 
     interface Exposes {
 

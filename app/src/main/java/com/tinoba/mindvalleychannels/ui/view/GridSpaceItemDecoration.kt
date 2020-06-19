@@ -1,4 +1,4 @@
-package com.tinoba.mindvalleychannels.utils
+package com.tinoba.mindvalleychannels.ui.view
 
 import android.graphics.Rect
 import android.view.View

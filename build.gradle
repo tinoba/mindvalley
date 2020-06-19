@@ -25,8 +25,9 @@ buildscript {
             'retrofit'         : "2.9.0",
             'okhttp'           : "3.14.9",
 
-            'rxJava'           : "3.0.4",
-            'rxAndroid'        : "3.0.0",
+            'rxJava'           : "2.2.19",
+            'rxAndroid'        : "2.1.1",
+            'rxJavaRetrofit'   : "2.9.0",
 
             'junit'            : "4.12",
             'test_junit'       : "1.1.1",

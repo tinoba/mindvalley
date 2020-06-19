@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimaryDark">#23272F</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="channels_title_text_color">#C1C1C1</color>
     <color name="fragment_home_background_color">#23272F</color>

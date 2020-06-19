@@ -10,7 +10,7 @@ import com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel.HomeFragmentView
 import com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel.HomeFragmentViewModelImpl
 import dagger.Module
 import dagger.Provides
-import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.Scheduler
 import javax.inject.Named
 
 @Module

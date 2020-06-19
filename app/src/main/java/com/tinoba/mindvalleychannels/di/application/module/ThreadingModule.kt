@@ -2,9 +2,9 @@ package com.tinoba.mindvalleychannels.di.application.module
 
 import dagger.Module
 import dagger.Provides
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Scheduler
-import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 import javax.inject.Named
 import javax.inject.Singleton
@@ -31,10 +31,10 @@ class ThreadingModule {
 
     interface Exposes {
 
-        @Named(ThreadingModule.MAIN_SCHEDULER)
+        @Named(MAIN_SCHEDULER)
         fun mainScheduler(): Scheduler
 
-        @Named(ThreadingModule.BACKGROUND_SCHEDULER)
+        @Named(BACKGROUND_SCHEDULER)
         fun backgroundScheduler(): Scheduler
     }
 }

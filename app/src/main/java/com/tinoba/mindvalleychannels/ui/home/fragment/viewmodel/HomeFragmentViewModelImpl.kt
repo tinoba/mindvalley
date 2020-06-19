@@ -2,18 +2,15 @@ package com.tinoba.mindvalleychannels.ui.home.fragment.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tinoba.domain.model.Channels
-import com.tinoba.domain.model.Course
-import com.tinoba.domain.model.NewEpisode
-import com.tinoba.domain.model.Series
+import com.tinoba.domain.model.*
 import com.tinoba.domain.repository.ChannelsRepository
 import com.tinoba.mindvalleychannels.ui.home.fragment.HomeScreenModel
 import com.tinoba.mindvalleychannels.ui.home.fragment.NewEpisodesScreenModel
 import com.tinoba.mindvalleychannels.ui.home.fragment.SeriesScreenModel
-import io.reactivex.rxjava3.core.Scheduler
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.functions.Function3
+import io.reactivex.Scheduler
+import io.reactivex.Single
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.Function3
 
 class HomeFragmentViewModelImpl(
     private val backgroundThreadScheduler: Scheduler,
@@ -63,7 +60,7 @@ class HomeFragmentViewModelImpl(
             }))
 
             channels.forEach {
-                if (it.channels.isNotEmpty() && it.channels.first() is Course) {
+                if (it.channels.all { it.type === ChannelType.COURSE }) {
                     homeScreenModels.add(
                         HomeScreenModel.CourseItem(
                             it.id,
@@ -72,7 +69,7 @@ class HomeFragmentViewModelImpl(
                             it.iconAsset,
                             it.channels.map { SeriesScreenModel(it.title, it.coverAsset) })
                     )
-                } else if (it.channels.isNotEmpty() && it.channels.first() is Series) {
+                } else if (it.channels.all {  it.type === ChannelType.SERIES }) {
                     homeScreenModels.add(
                         HomeScreenModel.SeriesItem(
                             it.id,

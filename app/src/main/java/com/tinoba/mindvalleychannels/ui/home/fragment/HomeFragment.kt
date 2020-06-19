@@ -42,13 +42,16 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initAdapter()
+        setClickListeners()
+        setObservers()
 
+        viewModel.getData()
+    }
+
+    private fun setObservers() {
         viewModel.uiModel.observe(this, Observer { homeScreenModels ->
             adapter.submitList(homeScreenModels)
         })
-
-        viewModel.getData()
-
     }
 
     private fun initAdapter() {
@@ -56,5 +59,12 @@ class HomeFragment : BaseFragment() {
 
         channelsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         channelsRecyclerView.adapter = adapter
+    }
+
+    private fun setClickListeners() {
+        pullToRefreshLayout.setOnRefreshListener {
+            pullToRefreshLayout.isRefreshing = false
+            viewModel.getData()
+        }
     }
 }

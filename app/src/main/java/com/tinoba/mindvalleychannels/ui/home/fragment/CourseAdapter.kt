@@ -42,7 +42,7 @@ class CourseAdapter(
                 .placeholder(CircularProgressBar(context))
                 .fitCenter()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.ic_mindvalley_placeholder)
+                .error(R.drawable.no_image)
                 .into(courseImage)
         }
     }

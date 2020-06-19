@@ -1,4 +1,4 @@
-package com.tinoba.mindvalleychannels.di.activity.module
+package com.tinoba.mindvalleychannels.di.application.module
 
 import com.tinoba.data.networking.mapper.ApiMapper
 import com.tinoba.data.networking.mapper.ApiMapperImpl

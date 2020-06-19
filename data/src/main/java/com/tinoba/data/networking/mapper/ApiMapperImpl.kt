@@ -3,10 +3,10 @@ package com.tinoba.data.networking.mapper
 import com.tinoba.data.networking.model.reqsponse.categories.CategoriesApi
 import com.tinoba.data.networking.model.reqsponse.channels.ChannelsApi
 import com.tinoba.data.networking.model.reqsponse.newepisodes.NewEpisodesApi
+import com.tinoba.domain.model.Channel
+import com.tinoba.domain.model.ChannelType
 import com.tinoba.domain.model.Channels
-import com.tinoba.domain.model.Course
 import com.tinoba.domain.model.NewEpisode
-import com.tinoba.domain.model.Series
 
 class ApiMapperImpl : ApiMapper {
 
@@ -14,12 +14,12 @@ class ApiMapperImpl : ApiMapper {
 
         return data.channels.map { channel ->
             val channels = if (channel.series.isEmpty()) {
-                channel.courses.map { course -> Course(course.title, course.coverAsset.url) }
+                channel.courses.map { course -> Channel(course.title, course.coverAsset.url, ChannelType.COURSE) }
             } else {
-                channel.series.map { series -> Series(series.title, series.coverAsset.url) }
+                channel.series.map { series -> Channel(series.title, series.coverAsset.url, ChannelType.SERIES) }
             }
 
-            Channels(channel.title, channels, channel.mediaCount, channel.id, channel.iconAsset?.thumbnailUrl ?: "", channel.coverAsset?.url ?: "")
+            Channels(channel.title, channels.take(6), channel.mediaCount, channel.id, channel.iconAsset?.thumbnailUrl ?: "", channel.coverAsset?.url ?: "")
         }
     }
 
