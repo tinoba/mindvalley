@@ -61,7 +61,7 @@ dependencies {
 
     //image
     implementation "com.github.bumptech.glide:glide:$versions.glide"
-    implementation 'com.rishabhharit.roundedimageview:RoundedImageView:0.8.4'
+    implementation "com.rishabhharit.roundedimageview:RoundedImageView:$versions.rounded_image"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swipe_to_refresh"
 
     //rxjava

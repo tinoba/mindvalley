@@ -16,8 +16,8 @@ buildscript {
             'viewmodel'        : "2.2.0",
             'material'         : "1.1.0",
             'glide'            : "4.11.0",
-            'rounded_image'    : "2.3.0",
             'swipe_to_refresh' : "1.0.0",
+            'rounded_image'    : "0.8.4",
 
             'room'             : "2.2.5",
             'dagger'           : "2.28",
