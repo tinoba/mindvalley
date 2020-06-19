@@ -6,6 +6,15 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compile_sdk_version
 
+    signingConfigs {
+        release {
+            keyAlias 'mindvalley'
+            keyPassword 'mindvalley'
+            storeFile file('mindvalley_keystore.jks')
+            storePassword 'mindvalley'
+        }
+    }
+
     defaultConfig {
         applicationId "com.tinoba.mindvalleychannels"
         minSdkVersion min_sdk_version
@@ -18,8 +27,16 @@ android {
 
     buildTypes {
         release {
+            manifestPlaceholders = [enableCrashReporting: "true"]
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            manifestPlaceholders = [enableCrashReporting: "false"]
+            applicationIdSuffix ".debug"
+            debuggable true
         }
     }
 
