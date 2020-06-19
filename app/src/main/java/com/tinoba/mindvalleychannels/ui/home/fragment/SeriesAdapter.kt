@@ -43,7 +43,6 @@ class SeriesAdapter(
                 .placeholder(CircularProgressBar(context))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.no_image)
-                .dontAnimate()
                 .into(seriesImage)
         }
     }

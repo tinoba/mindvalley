@@ -8,9 +8,9 @@ import com.tinoba.domain.model.NewEpisode
 
 interface ApiMapper {
 
-    fun mapToChannels(channelsApi: ChannelsApi): List<Channels>
+    fun mapToChannels(channelsApi: ChannelsApi?): List<Channels>
 
-    fun mapToNewEpisodes(newEpisodesApi: NewEpisodesApi): List<NewEpisode>
+    fun mapToNewEpisodes(newEpisodesApi: NewEpisodesApi?): List<NewEpisode>
 
-    fun mapToCategories(categoriesApi: CategoriesApi): List<String>
+    fun mapToCategories(categoriesApi: CategoriesApi?): List<String>
 }

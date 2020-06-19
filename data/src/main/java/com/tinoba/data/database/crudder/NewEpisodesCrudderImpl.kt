@@ -9,7 +9,7 @@ import io.reactivex.Single
 class NewEpisodesCrudderImpl(private val newEpisodesDao: NewEpisodesDao) : NewEpisodesCrudder {
 
     override fun saveNewEpisode(newEpisode: NewEpisode) = with(newEpisode) {
-        newEpisodesDao.saveEpisode(DbNewEpisodes(title, coverAssetUrl, channelName))
+        newEpisodesDao.saveEpisode(DbNewEpisodes(title ?: "", coverAssetUrl ?: "", channelName ?: ""))
     }
 
     override fun getNewEpisodes(): Single<List<NewEpisode>> =

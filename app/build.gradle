@@ -36,8 +36,6 @@ dependencies {
     implementation project(':domain')
     implementation project(':device')
 
-    debugImplementation 'im.dino:dbinspector:4.0.0'
-
     //core
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     implementation "androidx.core:core-ktx:$versions.core_ktx"
